@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated, StyleSheet } from 'react-native';
+import { Animated, Platform, StyleSheet } from 'react-native';
 
 import AnimatedText from '../../Typography/AnimatedText';
 import type { LabelBackgroundProps } from '../types';
@@ -67,7 +67,7 @@ const LabelBackground = ({
         labelStyle,
         styles.outlinedLabel,
         {
-          top: topPosition + 1,
+          top: Platform.OS === 'web' ? topPosition - 1 : topPosition + 1,
           width: labelLayoutWidth - placeholderStyle.paddingHorizontal,
           backgroundColor,
           opacity,
